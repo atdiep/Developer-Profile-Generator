@@ -1,32 +1,33 @@
 const colors = {
-    green: {
-        wrapperBackground: "#E6E1C3",
-        headerBackground: "#C1C72C",
-        headerColor: "black",
-        photoBorderColor: "#black"
-    },
-    blue: {
-        wrapperBackground: "#5F64D3",
-        headerBackground: "#26175A",
-        headerColor: "white",
-        photoBorderColor: "#73448C"
-    },
-    pink: {
-        wrapperBackground: "#879CDF",
-        headerBackground: "#FF8374",
-        headerColor: "white",
-        photoBorderColor: "#FEE24C"
-    },
-    red: {
-        wrapperBackground: "#DE9967",
-        headerBackground: "#870603",
-        headerColor: "white",
-        photoBorderColor: "white"
-    }
+  green: {
+    wrapperBackground: "#E6E1C3",
+    headerBackground: "#C1C72C",
+    headerColor: "black",
+    photoBorderColor: "#black"
+  },
+  blue: {
+    wrapperBackground: "#5F64D3",
+    headerBackground: "#26175A",
+    headerColor: "white",
+    photoBorderColor: "#73448C"
+  },
+  pink: {
+    wrapperBackground: "#879CDF",
+    headerBackground: "#FF8374",
+    headerColor: "white",
+    photoBorderColor: "#FEE24C"
+  },
+  red: {
+    wrapperBackground: "#DE9967",
+    headerBackground: "#870603",
+    headerColor: "white",
+    photoBorderColor: "white"
+  }
 };
 
-function generateHTML(data) {
-    return `<!DOCTYPE html>
+module.exports.generateHTML = function generateHTML(data) {
+  return `
+<!DOCTYPE html>
   <html lang="en">
      <head>
         <meta charset="UTF-8" />
@@ -35,6 +36,44 @@ function generateHTML(data) {
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"/>
         <link href="https://fonts.googleapis.com/css?family=BioRhyme|Cabin&display=swap" rel="stylesheet">
         <title>Document</title>
+        <body>
+          <div class="jumbotron jumbotron-fluid">
+          <div class="container">
+            <h1 class="display-4">Hi! My name is ${data.actualName}!</h1>
+            <p class="lead">Currently @ ${data.company}</p>
+            <ul class="list-group">
+              <li class="list-group-item"><i class="fa fa-map-marker-alt">${data.location}</i></li>
+              <li class="list-group-item"><i class="fa fa-github">${data.github}</i></li>
+              <li class="list-group-item"><i class="fa fa-rss">${data.blog}</i></li>
+            </ul>
+          </div>
+          </div>
+            <p>${data.bio}</p>
+
+          <div class="card">
+            <div class="card-body">
+              <p>Public Repositories<br></br>${data.publicRepos}</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <p>Followers<br></br>${data.followers}</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <p>GitHub Stars<br></br>${data.stars}</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <p>Following<br></br>${data.following}</p>
+            </div>
+          </div>
+
         <style>
             @page {
               margin: 0;
@@ -170,5 +209,7 @@ function generateHTML(data) {
               zoom: .75; 
             } 
            }
-        </style>`
+        </style>
+        </body>
+        </html>`;
 }
